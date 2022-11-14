@@ -1,8 +1,8 @@
-# flutter_timer
+# flutter_timer_widget
 
 This is a widget for showing countdown timer in flutter. This timer has all the basic operations needed for a timer. 
 
-* Demo App: https://github.com/evanemran
+* Github: https://github.com/evanemran/flutter_timer
 
 ## Features
 
@@ -24,7 +24,7 @@ To use this widget there is not any special requirement. IF you have flutter ins
 Add this line to your dependencies:
 
 ```
-flutter_timer: ^0.1.1
+flutter_timer: ^0.0.1
 ```
 
 ```
@@ -33,9 +33,9 @@ import 'package:flutter_timer/flutter_timer.dart';
 
 ```dart
 FlutterTimer(
-duration: const Duration(minutes: 5),
-onFinished: () {
-//do something after countdown is finished
+  duration: const Duration(minutes: 5),
+  onFinished: () {
+    //do something after countdown is finished
 },)
 ```
 
