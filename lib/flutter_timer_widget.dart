@@ -103,6 +103,7 @@ Widget buildTimerCard({required String time, required String header, required Du
 
   return Card(
     elevation: 8.0,
+    color: Colors.white,
 
     child: Padding(padding: const EdgeInsets.all(8.0),
       child: Wrap(
