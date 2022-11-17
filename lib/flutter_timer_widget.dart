@@ -2,12 +2,15 @@ library flutter_timer;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_timer_widget/timer_controller.dart';
+import 'package:flutter_timer_widget/timer_style.dart';
 
 class FlutterTimer extends StatefulWidget {
-  const FlutterTimer({Key? key, required this.duration, required this.onFinished}) : super(key: key);
+  const FlutterTimer({Key? key, required this.duration, required this.onFinished, required this.timerController}) : super(key: key);
 
   final Duration duration;
   final Function() onFinished;
+  final TimerController timerController;
 
   @override
   State<FlutterTimer> createState() => _FlutterTimerState();
@@ -97,51 +100,59 @@ class _FlutterTimerState extends State<FlutterTimer> {
       });
     }
   }
-}
+  Widget buildTimerCard({required String time, required String header, required Duration duration}) {
 
-Widget buildTimerCard({required String time, required String header, required Duration duration}) {
 
-  return Card(
-    elevation: 8.0,
-    color: Colors.white,
+    return Container(
+      margin: widget.timerController.margin,
+      decoration: BoxDecoration(
+          color: widget.timerController.background,
+          shape: widget.timerController.timerStyle== TimerStyle.circular ? BoxShape.circle : BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(widget.timerController.elevation, widget.timerController.elevation), //(x,y)
+              blurRadius: 4.0,
+            ),
+          ]
+      ),
+      child: Padding(padding: widget.timerController.padding,
+        child: Wrap(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _animatedText(Text(
+                  time,
+                  style: widget.timerController.timerTextStyle,
+                ), duration),
+                Row(children: [Expanded(child: Text(
+                  header,
+                  style: widget.timerController.subTitleTextStyle, textAlign: TextAlign.center,
+                ))],)
+              ],)
+          ],
+        ),),
+    );
+  }
 
-    child: Padding(padding: const EdgeInsets.all(8.0),
-      child: Wrap(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _animatedText(Text(
-                time,
-                style: const TextStyle(color: Colors.black, fontSize: 40, fontWeight: FontWeight.bold),
-              ), duration),
-              Row(children: [Expanded(child: Text(
-                header,
-                style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.normal), textAlign: TextAlign.center,
-              ))],)
-            ],)
-        ],
-      ),),
-  );
-
-}
-
-Widget _animatedText(Text text, Duration duration) {
-  return AnimatedSwitcher(
-      duration: duration,
-      transitionBuilder:
-          (Widget child, Animation<double> animation) {
-        return SlideTransition(
-          position: Tween<Offset>(
-              begin: const Offset(0.0, -0.5),
-              end: const Offset(0.0, 0.0))
-              .animate(animation),
-          child: child,
-        );
-      },
-      child: text
-  );
+  Widget _animatedText(Text text, Duration duration) {
+    return AnimatedSwitcher(
+        duration: duration,
+        transitionBuilder:
+            (Widget child, Animation<double> animation) {
+          return SlideTransition(
+            position: Tween<Offset>(
+                begin: const Offset(0.0, -0.5),
+                end: const Offset(0.0, 0.0))
+                .animate(animation),
+            child: child,
+          );
+        },
+        child: text
+    );
+  }
 }
 
 class TimerType {

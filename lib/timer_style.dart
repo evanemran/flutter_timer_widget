@@ -1,0 +1,1 @@
+enum TimerStyle { circular, rectangular }
