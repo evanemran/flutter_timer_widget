@@ -13,7 +13,7 @@ This is a widget for showing countdown timer in flutter. This timer has all the 
 * Background Mode
 * Multiple Themes
 
-<img src="https://github.com/evanemran/flutter_timer_widget/blob/master/assets/flutter_timer_demo.png" width="512">
+<img src="https://github.com/evanemran/flutter_timer_widget/blob/master/assets/flutter_timer_demo.png" width="450">
 
 [comment]: <> (![Flutter Timer Widget Demo]&#40;https://github.com/evanemran/flutter_timer_widget/blob/master/assets/flutter_timer_demo.png?raw=true&#41;)
 
