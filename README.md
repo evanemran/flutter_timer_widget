@@ -2,7 +2,7 @@
 
 This is a widget for showing countdown timer in flutter. This timer has all the basic operations needed for a timer. 
 
-* Github: https://github.com/evanemran/flutter_timer
+* Github: https://github.com/evanemran/flutter_timer_widget
 
 ## Features
 
@@ -12,6 +12,8 @@ This is a widget for showing countdown timer in flutter. This timer has all the 
 * Responsive Layout
 * Background Mode
 * Multiple Themes
+
+![Flutter Timer Widget Demo](https://github.com/evanemran/flutter_timer_widget/blob/master/assets/flutter_timer_demo.png?raw=true)
 
 ## Getting started
 
@@ -24,19 +26,27 @@ To use this widget there is not any special requirement. IF you have flutter ins
 Add this line to your dependencies:
 
 ```
-flutter_timer: ^0.0.1
+flutter_timer: ^0.0.2
 ```
 
 ```
-import 'package:flutter_timer/flutter_timer.dart';
+import 'package:flutter_timer/flutter_timer_widget.dart';
 ```
 
 ```dart
 FlutterTimer(
-  duration: const Duration(minutes: 5),
-  onFinished: () {
-    //do something after countdown is finished
-},)
+  duration: const Duration(days: 2),
+  onFinished: () {},
+  timerController: TimerController(
+    elevation: 4,
+    margin: const EdgeInsets.all(4.0),
+    padding: const EdgeInsets.all(8.0),
+    background: Colors.orange,
+    timerStyle: TimerStyle.Rectanular,
+    timerTextStyle: const TextStyle(color: Colors.white, fontSize: 30),
+    subTitleTextStyle: const TextStyle(color: Colors.white, fontSize: 12),
+),
+)
 ```
 
 ## Conclusion

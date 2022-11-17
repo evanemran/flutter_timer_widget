@@ -1,6 +1,6 @@
 name: flutter_timer_widget
 description: A Flutter Countdown Timer Package
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/evanemran/flutter_timer
 
 environment:
